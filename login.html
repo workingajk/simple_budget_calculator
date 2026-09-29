@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <script src="./script.js"></script>
+    </head>
+    <body class="flex justify-center items-center h-[100vh]">
+        <div class="flex flex-col bg-violet-200 p-10 gap-4 rounded-md">
+            <h1 class="text-center font-bold text-2xl pb-6">Login</h1>
+            <!-- <input type="text" placeholder="Username" class="outline-1 rounded-md py-1 px-3"> -->
+            <input
+                type="email"
+                placeholder="Email"
+                class="outline-1 rounded-md py-1 px-3"
+                id="email"
+            />
+            <input
+                type="password"
+                placeholder="Password"
+                class="outline-1 rounded-md py-1 px-3"
+                id="password"
+            />
+            <div class="flex flex-col gap-2 justify-center">
+                <button
+                    class="outline-1 rounded-md py-1 px-3 bg-violet-700 text-white"
+                    onclick="login()"
+                >
+                    Login
+                </button>
+                <p class="text-center">
+                    Don't have an Account? <a href="./register.html">Register</a>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

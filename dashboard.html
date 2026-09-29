@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <script src="./script.js"></script>
+    </head>
+    <body>
+        <header class="flex justify-between bg-violet-200 p-4">
+            <h1 class="font-bold text-2xl">Budget Calculator</h1>
+            <div class="flex gap-6 items-center">
+                <h4 class="text-xl">
+                    Welcome <span id="uname">Rajappan</span>
+                </h4>
+                <button
+                    class="font-bold text-1xl bg-violet-700 text-white py-1 px-3 rounded-md" onclick="logout()"
+                >
+                    Logout
+                </button>
+            </div>
+        </header>
+        <section class="flex justify-between p-4 gap-6 ">
+            <div class="bg-violet-200 flex flex-col items-center w-1/2 p-4 gap-4">
+                <p class="text-2xl font-semibold">Income</p>
+                <select
+                    name=""
+                    id="income_type"
+                    class="bg-white py-1 px-3"
+                    required
+                >
+                    <option value="" disabled selected>
+                        Select Income Type
+                    </option>
+                    <option value="Salary">Salary</option>
+                    <option value="Freelance">Freelance</option>
+                    <option value="Business">Business</option>
+                    <option value="Investments">Investments</option>
+                    <option value="Other">Other Income</option>
+                </select>
+
+                <input
+                    type="number"
+                    class="bg-white py-1 px-3"
+                    placeholder="Add Income"
+                    id="income"
+                />
+                <button
+                    class="font-bold text-1xl bg-violet-700 text-white py-1 px-3 rounded-md"
+                    onclick="addIncome()"
+                >
+                    Add
+                </button>
+            </div>
+            <div class="bg-violet-200 flex flex-col items-center w-1/2 p-4 gap-4">
+                <p class="text-2xl font-semibold">Expense</p>
+                <select
+                    name=""
+                    id="expense_type"
+                    class="bg-white py-1 px-3"
+                    required
+                >
+                    <option value="" disabled selected>
+                        Select Expense Type
+                    </option>
+                    <option value="Rent">Rent</option>
+                    <option value="Groceries">Groceries</option>
+                    <option value="Transportation">Transportation</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Other">Other Expenses</option>
+                </select>
+
+                <input
+                    type="number"
+                    id="expense"
+                    class="bg-white py-1 px-3"
+                    placeholder="Add Expense"
+                />
+                <button
+                    class="font-bold text-1xl bg-violet-700 text-white py-1 px-3 rounded-md"
+                    onclick="addExpense()"
+                >
+                    Add
+                </button>
+            </div>
+        </section>
+
+        <section class="flex flex-col justify-center items-center">
+            <div
+                class="flex flex-col justify-center items-center bg-violet-200 p-4"
+            >
+                <p>
+                    Net Balance (Total Income - Total Expenses)
+                    <span id="balance"> 0</span>
+                </p>
+                <div id="summary"></div>
+            </div>
+        </section>
+
+        <section class="flex justify-between p-4 gap-6 ">
+            <div class="flex flex-col bg-violet-200 p-4 w-full">
+                <table
+                    class="border-separate border-spacing-2 border border-gray-400 dark:border-gray-500 table-auto w-full text-center"
+                >
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Amout</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="income_table"></tbody>
+                </table>
+            </div>
+            <div class="flex flex-col bg-violet-200 p-4 w-full">
+                <table
+                    class="border-separate border-spacing-2 border border-gray-400 dark:border-gray-500 table-auto w-full text-center"
+                >
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Amout</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="expense_table"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <script>
+            uname.textContent = JSON.parse(
+                localStorage.getItem(localStorage.getItem("currUser")),
+            ).name;
+            updateTable();
+        </script>
+    </body>
+</html>
