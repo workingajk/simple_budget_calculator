@@ -8,21 +8,24 @@
         <script src="./script.js"></script>
     </head>
     <body>
-        <header class="flex justify-between bg-violet-200 p-4">
+        <header class="flex justify-between bg-violet-200 p-4 sticky top-0">
             <h1 class="font-bold text-2xl">Budget Calculator</h1>
             <div class="flex gap-6 items-center">
                 <h4 class="text-xl">
                     Welcome <span id="uname">Rajappan</span>
                 </h4>
                 <button
-                    class="font-bold text-1xl bg-violet-700 text-white py-1 px-3 rounded-md" onclick="logout()"
+                    class="font-bold text-1xl bg-violet-700 text-white py-1 px-3 rounded-md"
+                    onclick="logout()"
                 >
                     Logout
                 </button>
             </div>
         </header>
-        <section class="flex justify-between p-4 gap-6 ">
-            <div class="bg-violet-200 flex flex-col items-center w-1/2 p-4 gap-4">
+        <section class="flex justify-between p-4 gap-6">
+            <div
+                class="bg-violet-200 flex flex-col items-center w-1/2 p-4 gap-4"
+            >
                 <p class="text-2xl font-semibold">Income</p>
                 <select
                     name=""
@@ -53,7 +56,9 @@
                     Add
                 </button>
             </div>
-            <div class="bg-violet-200 flex flex-col items-center w-1/2 p-4 gap-4">
+            <div
+                class="bg-violet-200 flex flex-col items-center w-1/2 p-4 gap-4"
+            >
                 <p class="text-2xl font-semibold">Expense</p>
                 <select
                     name=""
@@ -98,8 +103,9 @@
             </div>
         </section>
 
-        <section class="flex justify-between p-4 gap-6 ">
+        <section class="flex justify-between p-4 gap-6">
             <div class="flex flex-col bg-violet-200 p-4 w-full">
+                <h1 class="text-2xl text-center pb-2">Income Log</h1>
                 <table
                     class="border-separate border-spacing-2 border border-gray-400 dark:border-gray-500 table-auto w-full text-center"
                 >
@@ -114,6 +120,7 @@
                 </table>
             </div>
             <div class="flex flex-col bg-violet-200 p-4 w-full">
+                <h1 class="text-2xl text-center pb-2">Expense Log</h1>
                 <table
                     class="border-separate border-spacing-2 border border-gray-400 dark:border-gray-500 table-auto w-full text-center"
                 >
@@ -130,9 +137,17 @@
         </section>
 
         <script>
-            uname.textContent = JSON.parse(
-                localStorage.getItem(localStorage.getItem("currUser")),
-            ).name;
+            let currUser = JSON.parse(localStorage.getItem(
+                localStorage.getItem("currUser"),
+            ))
+
+            console.log(currUser);
+
+            if (currUser == null || currUser == "") {
+                window.location.href = "./login.html";
+            } else {
+                uname.textContent = currUser.name;
+            }
             updateTable();
         </script>
     </body>

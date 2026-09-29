@@ -7,8 +7,18 @@
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <script src="./script.js"></script>
     </head>
-    <body class="flex justify-center items-center h-[100vh]">
-        <div class="flex flex-col bg-violet-200 p-10 gap-4 rounded-md">
+    <body class="flex justify-center items-center h-[100vh] gap-24 p-30">
+        <div class="w-full text-center">
+            <h1 class="text-4xl font-bold text-violet-700">
+                Budget Calculator
+            </h1>
+            <p class="mt-4 text-lg text-gray-600">
+                Plan your spending, track your expenses, and reach your savings
+                goals.
+            </p>
+        </div>
+
+        <div class="flex flex-col bg-violet-200 p-10 gap-4 rounded-md w-full">
             <h1 class="text-center font-bold text-2xl pb-6">Login</h1>
             <!-- <input type="text" placeholder="Username" class="outline-1 rounded-md py-1 px-3"> -->
             <input
@@ -31,9 +41,13 @@
                     Login
                 </button>
                 <p class="text-center">
-                    Don't have an Account? <a href="./register.html">Register</a>
+                    Don't have an Account?
+                    <a href="./register.html">Register</a>
                 </p>
             </div>
         </div>
+        <script>
+            localStorage.setItem("currUser", "");
+        </script>
     </body>
 </html>
