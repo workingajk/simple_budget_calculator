@@ -33,7 +33,7 @@ function login() {
             let obj = JSON.parse(localStorage.getItem(customer.email));
             if (obj.email == customer.email && obj.pswd == customer.pswd) {
                 alert("Login Successfull");
-                window.location.href = "./dashboard.html";
+                window.location.href = "./index.html";
                 localStorage.setItem("currUser", customer.email);
             } else {
                 alert("Incorrect Password");
