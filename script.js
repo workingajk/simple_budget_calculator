@@ -57,6 +57,8 @@ function addIncome() {
         customer.balance = Number(customer.balance) + Number(income.value);
 
         customer.transactions.push([
+            new Date().toLocaleString(),
+            //  new Date(),
             income_type.value,
             Number(income.value),
             customer.balance,
@@ -86,6 +88,7 @@ function addExpense() {
         customer.balance -= expense.value;
         balance.innerHTML = customer.balance;
         customer.transactions.push([
+            new Date().toLocaleString(),
             expense_type.value,
             Number(expense.value),
             customer.balance,
@@ -112,13 +115,14 @@ function updateTable() {
     for (let index = customer.transactions.length - 1; index > -1; index--) {
         if (
             
-            ["Salary", "Freelance", "Business", "Investments", "Other"].includes(customer.transactions[index][0] )
+            ["Salary", "Freelance", "Business", "Investments", "Other"].includes(customer.transactions[index][1] )
         ) {
             income_table.innerHTML += `
             <tr>
                 <td scope="row">${customer.transactions[index][0]}</td>
                 <td>${customer.transactions[index][1]}</td>
                 <td>${customer.transactions[index][2]}</td>
+                <td>${customer.transactions[index][3]}</td>
             </tr>
             `;
         } else {
@@ -127,6 +131,7 @@ function updateTable() {
                 <td scope="row">${customer.transactions[index][0]}</td>
                 <td>${customer.transactions[index][1]}</td>
                 <td>${customer.transactions[index][2]}</td>
+                <td>${customer.transactions[index][3]}</td>
             </tr>
             `;
         }
